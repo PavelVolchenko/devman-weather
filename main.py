@@ -1,17 +1,9 @@
-import requests
+from script import weather_forecast
 
 
-cities = ["Лондон", "Череповец", "Москва", "Ростов-на-Дону", "Уфа", "Санкт-Петербург"]
-payload = {
-    'm': '',
-    'M': '',
-    'n': '',
-    'q': '',
-    'T': '',
-    'lang': 'ru'
-    }
+def main():
+    weather_forecast()
 
-for city in cities:
-    response = requests.get(f'https://wttr.in/{city}', params=payload)
-    response.raise_for_status()
-    print(response.text)
+
+if __name__ == '__main__':
+    main()
