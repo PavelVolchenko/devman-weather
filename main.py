@@ -9,16 +9,14 @@ def get_weather(city):
         'n': '',
         'q': '',
         'T': '',
-        'lang': 'ru'
+        'lang': 'ru',
     }
     response = requests.get(f'https://wttr.in/{city}', params=payload)
     response.raise_for_status()
-    return response
+    weather_forecast = response.text
+    return weather_forecast
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description="Скрипт получения прогноза погоды. ")
-    parser.add_argument('city', help='Название города (латиница/кириллица)')
-    args = parser.parse_args()
-    weather = get_weather(city=args.city)
-    print(weather.text)
+    cities = ['Лондон', 'Череповец', 'Шереметьево']
+    [print(get_weather(city)) for city in cities]
