@@ -13,10 +13,10 @@ def get_weather(city):
     }
     response = requests.get(f'https://wttr.in/{city}', params=payload)
     response.raise_for_status()
-    weather_forecast = response.text
-    return weather_forecast
+    return response.text
 
 
 if __name__ == '__main__':
     cities = ['Лондон', 'Череповец', 'Шереметьево']
-    [print(get_weather(city)) for city in cities]
+    for city in cities:
+        print(get_weather(city))
